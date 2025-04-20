@@ -276,3 +276,108 @@ console.log(sum(2, 3));
 > This example showcases how to specify the return type of a function in TypeScript, ensuring that the function returns the expected data type. In this case, the `sum` function returns a number.
 >
 
+
+---
+
+# Interfaces, Types, and Arrays in TypeScript
+
+## 1. **Interfaces in TypeScript**
+
+An interface defines the **shape of an object**. It helps enforce structure and **type-checking** in objects.
+
+### Syntax:
+
+```ts
+interface User {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+}
+```
+
+### Example:
+
+```ts
+function greetUser(user: User): void {
+  console.log(`Hello, ${user.name}. You are ${user.age} years old.`);
+}
+
+const user1: User = {
+  name: "Pushkar",
+  age: 21,
+  isAdmin: true,
+};
+
+greetUser(user1);
+```
+
+### Features:
+- Interfaces can be extended using `extends`.
+- Optional properties can be defined using `?`.
+- Readonly properties can be defined using `readonly`.
+
+---
+
+## 2. **Type Aliases in TypeScript**
+
+A `type` is similar to an interface but is more flexible. It can represent primitive types, union types, tuples, and more.
+
+### Syntax:
+
+```ts
+type ID = number | string;
+
+type User = {
+  name: string;
+  age: number;
+};
+```
+
+### Example:
+
+```ts
+function getUserId(id: ID): void {
+  console.log(`User ID is: ${id}`);
+}
+
+getUserId(101);      // valid
+getUserId("abc123"); // valid
+```
+
+### When to use `type`:
+- When defining union, intersection, or tuple types.
+- When you need advanced type features.
+- For primitive type aliases.
+
+---
+
+## 3. **Arrays in TypeScript**
+
+TypeScript supports type-safe arrays. You can declare the type of elements inside an array.
+
+### Syntax:
+
+```ts
+let nums: number[] = [1, 2, 3];
+let names: string[] = ["A", "B", "C"];
+```
+
+### Example with Interfaces:
+
+```ts
+interface Student {
+  name: string;
+  grade: number;
+}
+
+const students: Student[] = [
+  { name: "Aarav", grade: 8 },
+  { name: "Meera", grade: 9 },
+];
+
+students.forEach((student) =>
+  console.log(`${student.name} is in grade ${student.grade}`)
+);
+```
+
+---
