@@ -276,6 +276,7 @@ console.log(sum(2, 3));
 > This example showcases how to specify the return type of a function in TypeScript, ensuring that the function returns the expected data type. In this case, the `sum` function returns a number.
 >
 
+<<<<<<< HEAD
 To represent your code in a **README.md** file with proper formatting and explanations, you can use Markdown syntax. Here's how you can structure the content with the code and explanations for better clarity:
 
 ---
@@ -382,3 +383,252 @@ console.log(typeof(value2));  // Output: number
 let value3 = getFirstElement([true, false, null, undefined, 5]);
 console.log(value3);  // Output: true
 ```
+=======
+
+---
+
+# Interfaces, Types, and Arrays in TypeScript
+
+## 1. **Interfaces in TypeScript**
+
+An interface defines the **shape of an object**. It helps enforce structure and **type-checking** in objects.
+
+### Syntax:
+
+```ts
+interface User {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+}
+```
+
+### Example:
+
+```ts
+function greetUser(user: User): void {
+  console.log(`Hello, ${user.name}. You are ${user.age} years old.`);
+}
+
+const user1: User = {
+  name: "Pushkar",
+  age: 21,
+  isAdmin: true,
+};
+
+greetUser(user1);
+```
+
+### Features:
+- Interfaces can be extended using `extends`.
+- Optional properties can be defined using `?`.
+- Readonly properties can be defined using `readonly`.
+
+---
+
+## 2. **Type Aliases in TypeScript**
+
+A `type` is similar to an interface but is more flexible. It can represent primitive types, union types, tuples, and more.
+
+### Syntax:
+
+```ts
+type ID = number | string;
+
+type User = {
+  name: string;
+  age: number;
+};
+```
+
+### Example:
+
+```ts
+function getUserId(id: ID): void {
+  console.log(`User ID is: ${id}`);
+}
+
+getUserId(101);      // valid
+getUserId("abc123"); // valid
+```
+
+### When to use `type`:
+- When defining union, intersection, or tuple types.
+- When you need advanced type features.
+- For primitive type aliases.
+
+---
+
+## 3. **Arrays in TypeScript**
+
+TypeScript supports type-safe arrays. You can declare the type of elements inside an array.
+
+### Syntax:
+
+```ts
+let nums: number[] = [1, 2, 3];
+let names: string[] = ["A", "B", "C"];
+```
+
+### Example with Interfaces:
+
+```ts
+interface Student {
+  name: string;
+  grade: number;
+}
+
+const students: Student[] = [
+  { name: "Aarav", grade: 8 },
+  { name: "Meera", grade: 9 },
+];
+
+students.forEach((student) =>
+  console.log(`${student.name} is in grade ${student.grade}`)
+);
+```
+
+---
+
+
+## Importing and Exporting Modules in TypeScript
+
+TypeScript follows the **ES6 module system**, where you can use `import` and `export` to share code between files. This system helps you modularize your code, making it more maintainable and reusable. Additionally, TypeScript allows importing and using external libraries such as **Express**.
+
+### 1. **Constant Exports** (Named Exports)
+
+You can export multiple functions or variables from a module, and import them individually into other files.
+
+#### Example: **Named Exports**
+
+**math.ts** (Module with named exports)
+
+```ts
+// Exporting individual functions
+export function add(x: number, y: number): number {
+    return x + y;
+}
+
+export function subtract(x: number, y: number): number {
+    return x - y;
+}
+```
+
+**main.ts** (Importing named exports)
+
+```ts
+// Importing specific functions from math.ts
+import { add, subtract } from './math';
+
+const result = add(5, 3);
+console.log(result);  // Output: 8
+```
+
+### 2. **Default Exports**
+
+You can also export a single item as the **default export**. This is typically used when a file contains only one main component, like a class.
+
+#### Example: **Default Export**
+
+**Calculator.ts** (Module with default export)
+
+```ts
+// Exporting a class as default
+export default class Calculator {
+    add(x: number, y: number): number {
+        return x + y;
+    }
+
+    subtract(x: number, y: number): number {
+        return x - y;
+    }
+}
+```
+
+**app.ts** (Importing the default export)
+
+```ts
+// Importing the default exported class
+import Calculator from './Calculator';
+
+const calc = new Calculator();
+console.log(calc.add(10, 5));  // Output: 15
+```
+
+### 3. **Importing External Libraries** (Using Express)
+
+To use external libraries like **Express**, you need to install them first via **npm** and then import them into your TypeScript files.
+
+#### Installing Express
+
+```bash
+# Install Express and its types
+npm install express
+npm install @types/express
+```
+
+#### Example: **Express Server**
+
+**server.ts** (Creating an Express app)
+
+```ts
+// Importing Express and required types
+import express, { Request, Response } from 'express';
+
+// Creating an instance of Express
+const app = express();
+
+// Defining a simple route
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello, TypeScript with Express!');
+});
+
+// Starting the server on port 3000
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+```
+
+### 4. **Running the TypeScript Code with Express**
+
+To run the code, you'll need to first transpile the TypeScript code into JavaScript using the TypeScript compiler.
+
+#### Steps:
+1. Install the necessary dependencies (Express, TypeScript).
+   
+   ```bash
+   npm install typescript @types/node
+   ```
+
+2. Create a **tsconfig.json** file for TypeScript configuration (if you don't have one).
+
+   ```bash
+   npx tsc --init
+   ```
+
+3. Compile the TypeScript code to JavaScript.
+
+   ```bash
+   npx tsc
+   ```
+
+4. Run the generated JavaScript code using **Node.js**.
+
+   ```bash
+   node dist/server.js
+   ```
+
+#### Output:
+If you visit `http://localhost:3000` in your browser, you'll see:
+
+```
+Hello, TypeScript with Express!
+```
+
+### Key Points:
+
+- **Named Exports**: You can export multiple items from a module and import them selectively.
+- **Default Export**: You can export a single item as default (usually a class or a function).
+- **Importing External Libraries**: TypeScript allows you to import and use third-party libraries like **Express** after installing them with **npm**.
+
+---
