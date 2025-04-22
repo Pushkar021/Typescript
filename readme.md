@@ -276,3 +276,109 @@ console.log(sum(2, 3));
 > This example showcases how to specify the return type of a function in TypeScript, ensuring that the function returns the expected data type. In this case, the `sum` function returns a number.
 >
 
+To represent your code in a **README.md** file with proper formatting and explanations, you can use Markdown syntax. Here's how you can structure the content with the code and explanations for better clarity:
+
+---
+
+## Enums in TypeScript
+
+In TypeScript, **Enums** are a way to define named constants, either numeric or string-based. You can mix both types in a single enum, but once a string-based member is defined, all subsequent members must be explicitly initialized with a value.
+
+### Example: Enum with Mixed Values
+
+```ts
+// Enum declaration mixing string and numeric values
+enum Options {
+    // This member is auto-initialized to 0 (numeric)
+    "PO",                          // PO = 0
+
+    // This is a string enum member
+    Up = "sfdss",
+
+    // This is a numeric enum member
+    Down = 69,
+
+    // This will be auto-initialized to 70, since the previous numeric value was 69
+    "po",                          // po = 70
+
+    // Another string enum member
+    Right = "You pressed the right key",
+
+    // If you try to write something like: Left, or Left == 
+    // without a value (after a string enum), it causes an error
+    // because once a string enum member is used, all members below must be explicitly initialized
+    // "Left"     ❌ Error: Enum member must have initializer
+}
+
+// Function that takes an enum value and logs a message based on the value
+function keyPressed(args: Options) {
+    if (args == Options.Up) {
+        console.log("up here ");
+    }
+    else if (args == Options.Right) {
+        console.log(Options.Right);
+    }
+    else if (args == Options.Down) {
+        console.log("down here");
+    }
+    else if (args == Options.po) {
+        console.log(Options.po);  // This will print 70 (numeric value of 'po')
+    }
+}
+
+// Get the value of the enum member 'po', which is 70
+const direction = Options.po;
+
+// Call the function with 'po' as argument
+keyPressed(direction);  // This prints: 70
+```
+
+### Explanation
+
+- **Enum Members**:
+  - **"PO"**: This is auto-initialized to `0` because it's the first member and doesn't have an explicit value.
+  - **Up**: A string-based enum member initialized with the value `"sfdss"`.
+  - **Down**: A numeric enum member initialized with the value `69`.
+  - **"po"**: This is auto-initialized to `70` because the previous numeric value was `69`.
+  - **Right**: A string-based enum member initialized with the value `"You pressed the right key"`.
+
+- **Enum Behavior**:
+  - When you add a string-based enum member (like `"Right"`), all subsequent members must have explicit values assigned. Adding `"Left"` without a value after a string-based member will cause an error.
+
+- **Function `keyPressed`**:
+  - This function accepts a parameter of type `Options` (the enum type). Depending on the passed value, it logs different messages.
+  - For example, `Options.po` will log `70`, which is the numeric value assigned to `"po"`.
+
+### Output
+
+When calling the function with `Options.po`, the output will be:
+
+```
+70
+```
+
+
+---
+## Generics in TypeScript
+- Generics in TypeScript provide a way to create components (such as functions, classes, or interfaces) that work with any data type while maintaining type safety. This allows for more flexible and reusable code.
+
+Example: Using Generics in a Function
+```ts
+
+// A generic function to get the first element of an array
+function getFirstElement<T>(arr: T[]): T {
+    return arr[0];
+}
+
+// Example usage with string array
+let value = getFirstElement<string>(["Pushkar", "Patel"]);
+console.log(value.toUpperCase());  // Output: PUSHKAR
+
+// Example usage with number array
+let value2 = getFirstElement<number>([1, 2, 3, 4]);
+console.log(typeof(value2));  // Output: number
+
+// Example usage with boolean array
+let value3 = getFirstElement([true, false, null, undefined, 5]);
+console.log(value3);  // Output: true
+```
