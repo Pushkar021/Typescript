@@ -1,6 +1,21 @@
-# TypeScript
+# TypeScript Documentation
 
-## Setting and installation
+## Links
+
+- [TypeScript Official Website](https://www.typescriptlang.org/)
+- [TypeScript GitHub Repository](https://github.com/microsoft/TypeScript)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+- [TypeScript Compiler (tsc) Documentation](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [TypeScript Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+- [TypeScript Enums](https://www.typescriptlang.org/docs/handbook/enums.html)
+- [TypeScript Interfaces](https://www.typescriptlang.org/docs/handbook/2/objects.html#interfaces)
+- [TypeScript Type Aliases](https://www.typescriptlang.org/docs/handbook/2/objects.html#type-aliases)
+- [TypeScript Arrays](https://www.typescriptlang.org/docs/handbook/2/objects.html#arrays)
+
+---
+
+## Setting and Installation
 
 **Step 1 - Install TypeScript Globally:**
 
@@ -9,8 +24,8 @@ npm install -g typescript
 npm list -g
 ```
 
-This command installs TypeScript globally on your machine, allowing you to use the `tsc` command anywhere.
-The second command to check list of install npm packages
+- This command installs TypeScript globally on your machine, allowing you to use the `tsc` command anywhere.
+- The second command checks the list of installed npm packages.
 
 **Step 2 - Initialize a Node.js Project with TypeScript:**
 
@@ -21,20 +36,20 @@ npm init -y
 npx tsc --init
 ```
 
-These commands create a new directory (`type-app`), initialize a Node.js project with default settings (`npm init -y`), and then generate a `tsconfig.json` file using `npx tsc --init`.
+- These commands create a new directory (`type-app`), initialize a Node.js project with default settings (`npm init -y`), and generate a `tsconfig.json` file using `npx tsc --init`.
 
 **Step 3 - Create a TypeScript File (a.ts):**
 
- - Create two folder  `dist` (it contain `js`) code and `src` (it contain `ts` code).
+- Create two folders: `dist` (to contain `js` code) and `src` (to contain `ts` code).
+- Create a `.gitignore` file and add `dist` to it. This prevents the `js` code from being pushed to GitHub.
 
- - Create `.gitingore` file add `dist` to it. It won't pushed the js code to github. 
+**Step 4 - Add `dist` and `src` to `tsconfig.json` file:**
 
-**Step 4 - Add dist and src to `tsconfig.json` file:**
+- Search and add:
+  - `"rootDir": "./src",`
+  - `"outDir": "./dist",`
 
--    ` "rootDir": "./src", `  - search and add 
--    ` "outDir": "./dist", ` 
- 
-**Step 5 - Create a TypeScript File `a.ts` inside src folder:**
+**Step 5 - Create a TypeScript File `a.ts` inside the `src` folder:**
 
 ```tsx
 // a.ts
@@ -42,157 +57,130 @@ const x: number = 1;
 console.log(x);
 ```
 
-**Step 5 - Compile the TypeScript File to JavaScript:**
+**Step 6 - Compile the TypeScript File to JavaScript:**
 
 ```bash
 tsc -b    OR    tsc src/a.ts --outDir ./dist/
 ```
-It will create a.js file inside `dist` folder
 
-**Step 5 - Run (`a.js`):**
+- This will create a `a.js` file inside the `dist` folder.
+
+**Step 7 - Run (`a.js`):**
 
 ```bash
-node dist\a.js    OR    node dist/a.js
+node dist/a.js
 ```
 
-<hr>
+---
 
-# Typescript
+## Why TypeScript
 
-## Why Typescript
-JavaScript is a powerful and widely used programming language, but it has a dynamic typing system, which means variable types are determined at runtime. While dynamic typing provides flexibility, it can lead to runtime errors that are challenging to catch during development.
+- JavaScript is a powerful and widely used programming language, but it has a dynamic typing system, which means variable types are determined at runtime. While dynamic typing provides flexibility, it can lead to runtime errors that are challenging to catch during development.
 
-## What Typescript
+---
 
-In response to these challenges, Microsoft introduced TypeScript, a superset of JavaScript that adds static typing to the language. TypeScript is designed to address some of the limitations of JavaScript by providing developers with a more robust type system.
+## What is TypeScript
 
-![](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F085e8ad8-528e-47d7-8922-a23dc4016453%2Fd578419f-7327-4580-9ece-2430f946db42%2FScreenshot_2024-01-28_at_1.00.19_AM.png?table=block&id=b04e253c-04bf-459c-a2a1-bcd33d400cdc&cache=v2)
+- TypeScript is a superset of JavaScript that adds static typing to the language. It is designed to address some of the limitations of JavaScript by providing developers with a more robust type system.
 
-## How Typescript
+![TypeScript Overview](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F085e8ad8-528e-47d7-8922-a23dc4016453%2Fd578419f-7327-4580-9ece-2430f946db42%2FScreenshot_2024-01-28_at_1.00.19_AM.png?table=block&id=b04e253c-04bf-459c-a2a1-bcd33d400cdc&cache=v2)
+
+---
+
+## How TypeScript Works
 
 1. **Static Typing:**
-    - TypeScript introduces static typing, allowing developers to declare the types of variables, parameters, and return values at compile-time.
-    - Static typing helps catch potential errors during development, offering a level of code safety that may not be achievable in pure JavaScript.
+   - TypeScript introduces static typing, allowing developers to declare the types of variables, parameters, and return values at compile-time.
+
 2. **Compatibility with JavaScript:**
-    - TypeScript is a superset of JavaScript, meaning that any valid JavaScript code is also valid TypeScript code.
-    - Developers can gradually adopt TypeScript in existing JavaScript projects without the need for a full rewrite.
+   - TypeScript is a superset of JavaScript, meaning that any valid JavaScript code is also valid TypeScript code.
+
 3. **Tooling Support:**
-    - TypeScript comes with a rich set of tools and features for development, including code editors (like Visual Studio Code) with built-in TypeScript support.
-    - The TypeScript compiler (tsc) translates TypeScript code into plain JavaScript, allowing it to run in any JavaScript environment.
+   - TypeScript comes with a rich set of tools and features for development, including code editors (like Visual Studio Code) with built-in TypeScript support.
+
 4. **Enhanced IDE Experience:**
-    - IDEs (Integrated Development Environments) that support TypeScript offer improved code navigation, autocompletion, and better refactoring capabilities.
-    - TypeScript's type information enhances the overall development experience.
+   - IDEs that support TypeScript offer improved code navigation, autocompletion, and better refactoring capabilities.
+
 5. **Interfaces and Type Declarations:**
-    - TypeScript introduces concepts like interfaces and type declarations, enabling developers to define clear contracts for their code.
-    - Interfaces help document the shape of objects, making it easier to understand and maintain the code.
+   - TypeScript introduces concepts like interfaces and type declarations, enabling developers to define clear contracts for their code.
+
 6. **Compilation:**
-    - TypeScript code is transpiled to JavaScript during the compilation process, ensuring that the resulting code is compatible with various JavaScript environments and browsers.
+   - TypeScript code is transpiled to JavaScript during the compilation process, ensuring compatibility with various JavaScript environments and browsers.
 
+---
 
-# **Execution of TypeScript Code**
+## Execution of TypeScript Code
 
-TypeScript code doesn't run natively in browsers or JavaScript environments. Instead, it undergoes a compilation process to generate equivalent JavaScript code. Here's an overview of how TypeScript code is executed:
+- TypeScript code doesn't run natively in browsers or JavaScript environments. Instead, it undergoes a compilation process to generate equivalent JavaScript code.
 
 1. **Writing TypeScript Code:**
-    - Developers write TypeScript code using `.ts` or `.tsx` files, employing TypeScript's syntax with features like static typing, interfaces, and type annotations.
+   - Developers write TypeScript code using `.ts` or `.tsx` files.
 
-1. **TypeScript Compiler (tsc):**
-    - The TypeScript Compiler (`tsc`) is a command-line tool that processes TypeScript code.
-    - Developers run `tsc` to initiate the compilation process.
+2. **TypeScript Compiler (tsc):**
+   - The TypeScript Compiler (`tsc`) processes TypeScript code.
 
-1. **Compilation Process:**
-    - The TypeScript Compiler parses and analyzes the TypeScript code, checking for syntax errors and type-related issues.
-    - It generates equivalent JavaScript code, typically in one or more `.js` or `.jsx` files.
+3. **Compilation Process:**
+   - The TypeScript Compiler parses and analyzes the TypeScript code, checking for syntax errors and type-related issues.
 
-1. **Generated JavaScript Code:**
-    - The output JavaScript code closely resembles the original TypeScript code but lacks TypeScript-specific constructs like type annotations.
-    - TypeScript features that aren't present in JavaScript (e.g., interfaces) are often transpiled or emitted in a way that doesn't affect runtime behavior.
+4. **Generated JavaScript Code:**
+   - The output JavaScript code closely resembles the original TypeScript code but lacks TypeScript-specific constructs.
 
-1. **JavaScript Execution:**
-    - The generated JavaScript code can now be executed by any JavaScript runtime or browser.
-    - Developers can include the resulting JavaScript files in HTML documents or use them in Node.js environments.
+5. **JavaScript Execution:**
+   - The generated JavaScript code can now be executed by any JavaScript runtime or browser.
 
-1. **Runtime Environment:**
-    - In the chosen runtime environment, the JavaScript code is interpreted or compiled by the JavaScript engine (e.g., V8 in Chrome, SpiderMonkey in Firefox).
-    - Just-in-time (JIT) compilation or interpretation occurs to convert the code into machine code that the computer's processor can execute.
+6. **Runtime Environment:**
+   - In the chosen runtime environment, the JavaScript code is interpreted or compiled by the JavaScript engine.
 
-1. **Interacting with the DOM (Browser Environments):**
-    - In browser environments, the JavaScript code, generated from TypeScript, may interact with the Document Object Model (DOM) to manipulate web page structure and behavior.
+7. **Interacting with the DOM (Browser Environments):**
+   - In browser environments, the JavaScript code may interact with the Document Object Model (DOM).
 
+![Execution Flow](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F085e8ad8-528e-47d7-8922-a23dc4016453%2F9eebffab-c71c-4259-bd0a-d3018f9cbcb6%2FScreenshot_2024-01-28_at_1.06.49_AM.png?table=block&id=c4e38c5b-b88b-420d-8c0b-cae9448be840&cache=v2)
 
-![](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F085e8ad8-528e-47d7-8922-a23dc4016453%2F9eebffab-c71c-4259-bd0a-d3018f9cbcb6%2FScreenshot_2024-01-28_at_1.06.49_AM.png?table=block&id=c4e38c5b-b88b-420d-8c0b-cae9448be840&cache=v2)
+---
 
-
-# **TypeScript Compiler (`tsc`)**
+## TypeScript Compiler (`tsc`)
 
 - The TypeScript Compiler (`tsc`) is responsible for transpiling TypeScript code into JavaScript.
-- It is a part of the official TypeScript distribution and can be installed using tools like npm.
-- Developers run `tsc` from the command line, specifying the TypeScript file(s) they want to compile.
-- Configuration for the compilation process can be provided via a `tsconfig.json` file.
-- The compiler performs type checking, emits JavaScript files, and allows customization of compilation options.
+- It can be installed using tools like npm and allows customization of compilation options.
 
-> In summary, TypeScript code is transformed into JavaScript through the TypeScript Compiler (`tsc`). This compilation process ensures that TypeScript's features are compatible with existing JavaScript environments, enabling developers to benefit from static typing during development while still producing standard JavaScript for execution.
-> 
+> In summary, TypeScript code is transformed into JavaScript through the TypeScript Compiler (`tsc`).
 
-In addition to the TypeScript Compiler (**`tsc`**), several alternative tools have gained popularity for their efficiency, speed, and additional features when transpiling TypeScript to JavaScript. Here are a couple of noteworthy ones:
+---
 
-1. esbuild: a highly performant JavaScript bundler and minifier, but it also supports TypeScript.
-2. **swc (Speedy Web Compiler): a fast and low-level JavaScript/TypeScript compiler.**
-
-
-# Basic Types in Typescript
-
-In TypeScript, basic types serve as the building blocks for defining the data types of variables. Here's an overview of some fundamental types provided by TypeScript:
+## Basic Types in TypeScript
 
 1. **Number:**
-    - Represents numeric values.
-    - Example:
-        
-        ```tsx
-        let age: number = 25;
-        ```
-        
+   ```tsx
+   let age: number = 25;
+   ```
+
 2. **String:**
-    - Represents textual data (sequences of characters).
-    - Example:
-        
-        ```tsx
-        let name: string = "John";
-        ```
-        
+   ```tsx
+   let name: string = "John";
+   ```
+
 3. **Boolean:**
-    - Represents true or false values.
-    - Example:
-        
-        ```tsx
-        let isStudent: boolean = true;
-        ```
-        
+   ```tsx
+   let isStudent: boolean = true;
+   ```
+
 4. **Null:**
-    - Represents the absence of a value.
-    - Example:
-        
-        ```tsx
-        let myVar: null = null;
-        ```
-        
+   ```tsx
+   let myVar: null = null;
+   ```
+
 5. **Undefined:**
-    - Represents a variable that has been declared but not assigned a value.
-    - Example:
-        
-        ```tsx
-        let myVar: undefined = undefined;
-        ```
+   ```tsx
+   let myVar: undefined = undefined;
+   ```
 
+---
 
+## Problems and Code Implementation
 
-# Problems and Code Implementation
+### 1. Hello World Greeting
 
-## 1] **Hello World Greeting**
-
-**Objective:** 
-
-Learn how to give types to function arguments in TypeScript.
+**Objective:** Learn how to give types to function arguments in TypeScript.
 
 **Task:**
 Write a TypeScript function named `greet` that takes a user's first name as an argument and logs a greeting message to the console.
@@ -216,31 +204,11 @@ function greet(firstName: string): void {
 greet("harkirat");
 ```
 
-**Explanation:**
+### 2. Sum Function
 
-1. **Function Definition (`function greet(firstName: string): void`):**
-    - The `greet` function is declared with a parameter named `firstName`.
-    - `: string` indicates that the `firstName` parameter must be of type string.
-    - `: void` specifies that the function does not return any value.
-2. **Function Body (`console.log("Hello " + firstName);`):**
-    - Inside the function body, a `console.log` statement prints a greeting message to the console.
-    - The message includes the provided `firstName` parameter.
-3. **Function Invocation (`greet("harkirat");`):**
-    - The function is called with the argument `"harkirat"`.
-    - The provided argument must be a string, aligning with the specified type in the function definition.
+**Objective:** Learn how to assign a return type to a function in TypeScript.
 
-> This example demonstrates the basic usage of TypeScript types in function parameters, ensuring that the expected data type is enforced and catching errors related to type mismatches during development.
-> 
-
-## 2] **Sum Function**
-
-**Objective:** 
-
-Learn how to assign a return type to a function in TypeScript.
-
-**Task:** 
-
-Write a TypeScript function named `sum` that takes two numbers as arguments and returns their sum. Additionally, invoke the function with an example.
+**Task:** Write a TypeScript function named `sum` that takes two numbers as arguments and returns their sum.
 
 **Function Signature:**
 
@@ -261,112 +229,44 @@ function sum(a: number, b: number): number {
 console.log(sum(2, 3));
 ```
 
-**Explanation:**
-
-1. **Function Definition (`function sum(a: number, b: number): number`):**
-    - The `sum` function is declared with two parameters, `a` and `b`, both of type number.
-    - `: number` indicates that the function returns a value of type number.
-2. **Function Body (`return a + b;`):**
-    - Inside the function body, the sum of `a` and `b` is calculated using the `+` operator.
-    - The result is then returned.
-3. **Function Invocation (`console.log(sum(2, 3));`):**
-    - The function is called with the arguments `2` and `3`.
-    - The result is logged to the console using `console.log`.
-
-> This example showcases how to specify the return type of a function in TypeScript, ensuring that the function returns the expected data type. In this case, the `sum` function returns a number.
->
-
-<<<<<<< HEAD
-To represent your code in a **README.md** file with proper formatting and explanations, you can use Markdown syntax. Here's how you can structure the content with the code and explanations for better clarity:
-
 ---
 
 ## Enums in TypeScript
 
-In TypeScript, **Enums** are a way to define named constants, either numeric or string-based. You can mix both types in a single enum, but once a string-based member is defined, all subsequent members must be explicitly initialized with a value.
+In TypeScript, **Enums** are a way to define named constants, either numeric or string-based.
 
 ### Example: Enum with Mixed Values
 
 ```ts
-// Enum declaration mixing string and numeric values
 enum Options {
-    // This member is auto-initialized to 0 (numeric)
     "PO",                          // PO = 0
-
-    // This is a string enum member
     Up = "sfdss",
-
-    // This is a numeric enum member
     Down = 69,
-
-    // This will be auto-initialized to 70, since the previous numeric value was 69
     "po",                          // po = 70
-
-    // Another string enum member
     Right = "You pressed the right key",
-
-    // If you try to write something like: Left, or Left == 
-    // without a value (after a string enum), it causes an error
-    // because once a string enum member is used, all members below must be explicitly initialized
-    // "Left"     ❌ Error: Enum member must have initializer
 }
 
-// Function that takes an enum value and logs a message based on the value
 function keyPressed(args: Options) {
     if (args == Options.Up) {
         console.log("up here ");
-    }
-    else if (args == Options.Right) {
+    } else if (args == Options.Right) {
         console.log(Options.Right);
-    }
-    else if (args == Options.Down) {
+    } else if (args == Options.Down) {
         console.log("down here");
-    }
-    else if (args == Options.po) {
-        console.log(Options.po);  // This will print 70 (numeric value of 'po')
+    } else if (args == Options.po) {
+        console.log(Options.po);  // This will print 70
     }
 }
 
-// Get the value of the enum member 'po', which is 70
 const direction = Options.po;
-
-// Call the function with 'po' as argument
 keyPressed(direction);  // This prints: 70
 ```
 
-### Explanation
+### Generics in TypeScript
 
-- **Enum Members**:
-  - **"PO"**: This is auto-initialized to `0` because it's the first member and doesn't have an explicit value.
-  - **Up**: A string-based enum member initialized with the value `"sfdss"`.
-  - **Down**: A numeric enum member initialized with the value `69`.
-  - **"po"**: This is auto-initialized to `70` because the previous numeric value was `69`.
-  - **Right**: A string-based enum member initialized with the value `"You pressed the right key"`.
+Generics in TypeScript provide a way to create components that work with any data type while maintaining type safety.
 
-- **Enum Behavior**:
-  - When you add a string-based enum member (like `"Right"`), all subsequent members must have explicit values assigned. Adding `"Left"` without a value after a string-based member will cause an error.
-
-- **Function `keyPressed`**:
-  - This function accepts a parameter of type `Options` (the enum type). Depending on the passed value, it logs different messages.
-  - For example, `Options.po` will log `70`, which is the numeric value assigned to `"po"`.
-
-### Output
-
-When calling the function with `Options.po`, the output will be:
-
-```
-70
-```
-
-
----
-## Generics in TypeScript
-- Generics in TypeScript provide a way to create components (such as functions, classes, or interfaces) that work with any data type while maintaining type safety. This allows for more flexible and reusable code.
-
-Example: Using Generics in a Function
 ```ts
-
-// A generic function to get the first element of an array
 function getFirstElement<T>(arr: T[]): T {
     return arr[0];
 }
@@ -374,26 +274,15 @@ function getFirstElement<T>(arr: T[]): T {
 // Example usage with string array
 let value = getFirstElement<string>(["Pushkar", "Patel"]);
 console.log(value.toUpperCase());  // Output: PUSHKAR
-
-// Example usage with number array
-let value2 = getFirstElement<number>([1, 2, 3, 4]);
-console.log(typeof(value2));  // Output: number
-
-// Example usage with boolean array
-let value3 = getFirstElement([true, false, null, undefined, 5]);
-console.log(value3);  // Output: true
 ```
-=======
 
 ---
 
-# Interfaces, Types, and Arrays in TypeScript
+## Interfaces, Types, and Arrays in TypeScript
 
-## 1. **Interfaces in TypeScript**
+### 1. Interfaces in TypeScript
 
-An interface defines the **shape of an object**. It helps enforce structure and **type-checking** in objects.
-
-### Syntax:
+An interface defines the **shape of an object**.
 
 ```ts
 interface User {
@@ -401,12 +290,8 @@ interface User {
   age: number;
   isAdmin: boolean;
 }
-```
 
-### Example:
-
-```ts
-function greetUser(user: User): void {
+function greetUser (user: User): void {
   console.log(`Hello, ${user.name}. You are ${user.age} years old.`);
 }
 
@@ -416,63 +301,32 @@ const user1: User = {
   isAdmin: true,
 };
 
-greetUser(user1);
+greetUser (user1);
 ```
 
-### Features:
-- Interfaces can be extended using `extends`.
-- Optional properties can be defined using `?`.
-- Readonly properties can be defined using `readonly`.
+### 2. Type Aliases in TypeScript
 
----
-
-## 2. **Type Aliases in TypeScript**
-
-A `type` is similar to an interface but is more flexible. It can represent primitive types, union types, tuples, and more.
-
-### Syntax:
+A `type` is similar to an interface but is more flexible.
 
 ```ts
 type ID = number | string;
 
-type User = {
-  name: string;
-  age: number;
-};
-```
-
-### Example:
-
-```ts
-function getUserId(id: ID): void {
-  console.log(`User ID is: ${id}`);
+function getUser Id(id: ID): void {
+  console.log(`User  ID is: ${id}`);
 }
 
-getUserId(101);      // valid
-getUserId("abc123"); // valid
+getUser Id(101);      // valid
+getUser Id("abc123"); // valid
 ```
 
-### When to use `type`:
-- When defining union, intersection, or tuple types.
-- When you need advanced type features.
-- For primitive type aliases.
+### 3. Arrays in TypeScript
 
----
-
-## 3. **Arrays in TypeScript**
-
-TypeScript supports type-safe arrays. You can declare the type of elements inside an array.
-
-### Syntax:
+TypeScript supports type-safe arrays.
 
 ```ts
 let nums: number[] = [1, 2, 3];
 let names: string[] = ["A", "B", "C"];
-```
 
-### Example with Interfaces:
-
-```ts
 interface Student {
   name: string;
   grade: number;
@@ -490,21 +344,11 @@ students.forEach((student) =>
 
 ---
 
-
 ## Importing and Exporting Modules in TypeScript
 
-TypeScript follows the **ES6 module system**, where you can use `import` and `export` to share code between files. This system helps you modularize your code, making it more maintainable and reusable. Additionally, TypeScript allows importing and using external libraries such as **Express**.
-
-### 1. **Constant Exports** (Named Exports)
-
-You can export multiple functions or variables from a module, and import them individually into other files.
-
-#### Example: **Named Exports**
-
-**math.ts** (Module with named exports)
+### 1. Constant Exports (Named Exports)
 
 ```ts
-// Exporting individual functions
 export function add(x: number, y: number): number {
     return x + y;
 }
@@ -514,275 +358,45 @@ export function subtract(x: number, y: number): number {
 }
 ```
 
-**main.ts** (Importing named exports)
+### 2. Default Exports
 
 ```ts
-// Importing specific functions from math.ts
-import { add, subtract } from './math';
-
-const result = add(5, 3);
-console.log(result);  // Output: 8
-```
-
-### 2. **Default Exports**
-
-You can also export a single item as the **default export**. This is typically used when a file contains only one main component, like a class.
-
-#### Example: **Default Export**
-
-**Calculator.ts** (Module with default export)
-
-```ts
-// Exporting a class as default
 export default class Calculator {
     add(x: number, y: number): number {
         return x + y;
     }
-
-    subtract(x: number, y: number): number {
-        return x - y;
-    }
 }
 ```
 
-**app.ts** (Importing the default export)
-
-```ts
-// Importing the default exported class
-import Calculator from './Calculator';
-
-const calc = new Calculator();
-console.log(calc.add(10, 5));  // Output: 15
-```
-
-### 3. **Importing External Libraries** (Using Express)
-
-To use external libraries like **Express**, you need to install them first via **npm** and then import them into your TypeScript files.
-
-#### Installing Express
+### 3. Importing External Libraries (Using Express)
 
 ```bash
-# Install Express and its types
 npm install express
 npm install @types/express
 ```
 
-#### Example: **Express Server**
-
-**server.ts** (Creating an Express app)
-
 ```ts
-// Importing Express and required types
 import express, { Request, Response } from 'express';
 
-// Creating an instance of Express
 const app = express();
 
-// Defining a simple route
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript with Express!');
 });
 
-// Starting the server on port 3000
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
 ```
 
-### 4. **Running the TypeScript Code with Express**
-
-To run the code, you'll need to first transpile the TypeScript code into JavaScript using the TypeScript compiler.
-
-#### Steps:
-1. Install the necessary dependencies (Express, TypeScript).
-   
-   ```bash
-   npm install typescript @types/node
-   ```
-
-2. Create a **tsconfig.json** file for TypeScript configuration (if you don't have one).
-
-   ```bash
-   npx tsc --init
-   ```
-
-3. Compile the TypeScript code to JavaScript.
-
-   ```bash
-   npx tsc
-   ```
-
-4. Run the generated JavaScript code using **Node.js**.
-
-   ```bash
-   node dist/server.js
-   ```
-
-#### Output:
-If you visit `http://localhost:3000` in your browser, you'll see:
-
-```
-Hello, TypeScript with Express!
-```
-Yes! `type` and `interface` are **very similar** in many cases — especially when defining object shapes — but they have some **key differences**.
-
-Let's go step by step and compare them **with code examples** 👇
-
 ---
 
-## ✅ 1. **Basic Object Shape — Same for Both**
+### Summary
 
-### Using `type`
+- **Named Exports**: Export multiple items from a module and import them selectively.
+- **Default Export**: Export a single item as default.
+- **Importing External Libraries**: TypeScript allows you to import and use third-party libraries after installing them with npm.
 
-```ts
-type UserType = {
-  name: string;
-  age: number;
-};
-```
+--- 
 
-### Using `interface`
-
-```ts
-interface UserInterface {
-  name: string;
-  age: number;
-};
-```
-
-Both work exactly the same here.
-
----
-
-## 🔄 2. **Extending Types and Interfaces**
-
-### `interface` uses `extends`
-
-```ts
-interface Person {
-  name: string;
-}
-
-interface Employee extends Person {
-  employeeId: number;
-}
-```
-
-### `type` uses `&` (intersection)
-
-```ts
-type Person = {
-  name: string;
-};
-
-type Employee = Person & {
-  employeeId: number;
-};
-```
-
-🟢 **Both work**, but `interface` is better when you're only dealing with object shapes and you want to extend.
-
----
-
-## ❌ 3. **Merging/Reopening is ONLY for `interface`**
-
-```ts
-interface Car {
-  brand: string;
-}
-
-interface Car {
-  speed: number;
-}
-
-// This is allowed. Merged as:
-// { brand: string, speed: number }
-const c: Car = {
-  brand: "Toyota",
-  speed: 100,
-};
-```
-
-### `type` does **NOT** allow this:
-
-```ts
-type Car = {
-  brand: string;
-};
-
-type Car = {
-  speed: number;
-}; // ❌ Error: Duplicate identifier
-```
-
-🔴 `type` cannot be reopened. `interface` can — helpful in large projects and library design.
-
----
-
-## 💥 4. **Only `type` can do unions and primitives**
-
-```ts
-type Status = "success" | "error" | "loading"; // ✅ Valid
-
-type UserID = string | number; // ✅ Valid
-```
-
-```ts
-interface Status = "success" | "error"; // ❌ Not allowed
-```
-
-🔵 Use `type` when you want to define **primitive unions**, tuples, or combinations like:
-
-```ts
-type Point = [number, number];
-```
-
----
-
-## 👨‍🏫 5. **Classes can `implement` only `interface`**
-
-```ts
-interface Person {
-  name: string;
-  greet(): void;
-}
-
-class Student implements Person {
-  name = "Pushkar";
-  greet() {
-    console.log("Hello");
-  }
-}
-```
-
-You can't do `class Student implements SomeType` if `SomeType` is a union or complex `type`.
-
----
-
-## 🟢 Summary (When to Use What?)
-
-| Use Case                      | Use `interface` | Use `type`                            |   |
-| ----------------------------- | --------------- | ------------------------------------- | - |
-| Object shapes                 | ✅               | ✅                                     |   |
-| Extending object shapes       | ✅               | ✅ (with `&`)                          |   |
-| Merging declarations          | ✅               | ❌                                     |   |
-| Unions (\`A                   | B\`)            | ❌                                     | ✅ |
-| Tuples, primitives, functions | ❌               | ✅                                     |   |
-| Class implementation          | ✅               | ⚠️ Only works if it's a simple object |   |
-
----
-
-### 👉 Rule of Thumb:
-
-* Use `interface` when defining **object shapes**, especially for classes and APIs.
-* Use `type` when you need **union**, **tuple**, or **function types**, or want more flexibility.
-
-
-
-### Key Points:
-
-- **Named Exports**: You can export multiple items from a module and import them selectively.
-- **Default Export**: You can export a single item as default (usually a class or a function).
-- **Importing External Libraries**: TypeScript allows you to import and use third-party libraries like **Express** after installing them with **npm**.
-
----
+This structured README provides a comprehensive overview of TypeScript, its installation, features, and practical examples, along with useful links for further reading.
