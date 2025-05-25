@@ -624,6 +624,160 @@ If you visit `http://localhost:3000` in your browser, you'll see:
 ```
 Hello, TypeScript with Express!
 ```
+Yes! `type` and `interface` are **very similar** in many cases — especially when defining object shapes — but they have some **key differences**.
+
+Let's go step by step and compare them **with code examples** 👇
+
+---
+
+## ✅ 1. **Basic Object Shape — Same for Both**
+
+### Using `type`
+
+```ts
+type UserType = {
+  name: string;
+  age: number;
+};
+```
+
+### Using `interface`
+
+```ts
+interface UserInterface {
+  name: string;
+  age: number;
+};
+```
+
+Both work exactly the same here.
+
+---
+
+## 🔄 2. **Extending Types and Interfaces**
+
+### `interface` uses `extends`
+
+```ts
+interface Person {
+  name: string;
+}
+
+interface Employee extends Person {
+  employeeId: number;
+}
+```
+
+### `type` uses `&` (intersection)
+
+```ts
+type Person = {
+  name: string;
+};
+
+type Employee = Person & {
+  employeeId: number;
+};
+```
+
+🟢 **Both work**, but `interface` is better when you're only dealing with object shapes and you want to extend.
+
+---
+
+## ❌ 3. **Merging/Reopening is ONLY for `interface`**
+
+```ts
+interface Car {
+  brand: string;
+}
+
+interface Car {
+  speed: number;
+}
+
+// This is allowed. Merged as:
+// { brand: string, speed: number }
+const c: Car = {
+  brand: "Toyota",
+  speed: 100,
+};
+```
+
+### `type` does **NOT** allow this:
+
+```ts
+type Car = {
+  brand: string;
+};
+
+type Car = {
+  speed: number;
+}; // ❌ Error: Duplicate identifier
+```
+
+🔴 `type` cannot be reopened. `interface` can — helpful in large projects and library design.
+
+---
+
+## 💥 4. **Only `type` can do unions and primitives**
+
+```ts
+type Status = "success" | "error" | "loading"; // ✅ Valid
+
+type UserID = string | number; // ✅ Valid
+```
+
+```ts
+interface Status = "success" | "error"; // ❌ Not allowed
+```
+
+🔵 Use `type` when you want to define **primitive unions**, tuples, or combinations like:
+
+```ts
+type Point = [number, number];
+```
+
+---
+
+## 👨‍🏫 5. **Classes can `implement` only `interface`**
+
+```ts
+interface Person {
+  name: string;
+  greet(): void;
+}
+
+class Student implements Person {
+  name = "Pushkar";
+  greet() {
+    console.log("Hello");
+  }
+}
+```
+
+You can't do `class Student implements SomeType` if `SomeType` is a union or complex `type`.
+
+---
+
+## 🟢 Summary (When to Use What?)
+
+| Use Case                      | Use `interface` | Use `type`                            |   |
+| ----------------------------- | --------------- | ------------------------------------- | - |
+| Object shapes                 | ✅               | ✅                                     |   |
+| Extending object shapes       | ✅               | ✅ (with `&`)                          |   |
+| Merging declarations          | ✅               | ❌                                     |   |
+| Unions (\`A                   | B\`)            | ❌                                     | ✅ |
+| Tuples, primitives, functions | ❌               | ✅                                     |   |
+| Class implementation          | ✅               | ⚠️ Only works if it's a simple object |   |
+
+---
+
+### 👉 Rule of Thumb:
+
+* Use `interface` when defining **object shapes**, especially for classes and APIs.
+* Use `type` when you need **union**, **tuple**, or **function types**, or want more flexibility.
+
+
 
 ### Key Points:
 
