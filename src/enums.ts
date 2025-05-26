@@ -44,6 +44,31 @@ const direction = Options.po;
 keyPressed(direction);  // This prints: 70
 
 
+
+//////////
+// Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.
+
+interface userType<T>{
+    id:number | string,
+    data:T
+}
+//we have to store id = 1 for movies id = 2 books id =3 for students
+enum userid{Movies = "one" ,Books = 2,Students,"sdf"}
+
+const user3:userType<object> = {
+    id:userid.Movies,
+    data:{name:"Harkirat movies"}
+}
+const user1:userType<object> = {
+    id:userid.Books,
+    data:{name:"Harkirat books"}
+}   
+const user2:userType<object> = {
+    id:userid.sdf,
+    data:{name:"Harkirat student"}
+}
+console.log(user1,user2,user3)
+/////////
 //example of enum with express 
 // enum ResponseStatus {
 //     Success = 200,
