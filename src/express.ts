@@ -11,14 +11,15 @@ const app = express();
 
 // Defining a simple route
 app.get('/', (req: Request, res: Response) => {
-   if(!req.query.userID){
-    res.status(statuscode.err).json({
-        msg:"an Error occured!"
+    if(!req.query.userID){
+        res.status(statuscode.err).json({
+            msg:"an Error occured!"
+        })
+    }
+    res.status(statuscode.Success).json({
+        msg:"hello world!"
     })
-}
-res.status(statuscode.Success).json({
-    msg:"hello world!"
-})
+    
 });
 
 // Starting the server on port 3000
